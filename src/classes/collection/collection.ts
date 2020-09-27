@@ -307,7 +307,10 @@ export class Collection implements ICollection {
    * http://dexie.org/docs/Collection/Collection.reverse()
    * 
    **/
-  reverse() {
+  reverse(shouldReverse?: boolean) {
+    if(shouldReverse === false) {
+      return this;
+    }
     this._ctx.dir = (this._ctx.dir === "prev" ? "next" : "prev");
     if (this._ondirectionchange) this._ondirectionchange(this._ctx.dir);
     return this;
